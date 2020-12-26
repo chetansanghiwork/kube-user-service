@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-user-deployment
+spec:
+  selector:
+    matchLabels:
+      run: my-user
+  replicas: 2
+  template:
+    metadata:
+      name: my-user-pod
+      labels:
+        run: my-user
+    spec:
+      containers:
+      - name: user01
+        image: chetangsanghi/kube-user-service:0.1
+        ports:
+        - containerPort: 8090
+        resources:
+          limits: 
+            cpu: 500m
+          requests:
+            cpu: 200m

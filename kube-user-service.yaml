@@ -1,0 +1,12 @@
+kind: Service                             # Defines to create Service type Object
+apiVersion: v1
+metadata:
+  name: userservice
+spec:
+  ports:
+    - port: 8090                               # Containers port exposed
+      targetPort: 8090                     # Pods port
+  selector:
+    run: my-user                    
+  type: ClusterIP
+
